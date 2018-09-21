@@ -2,7 +2,7 @@
 
 #include "UC05_TestingGroundsGameMode.h"
 #include "UC05_TestingGroundsHUD.h"
-#include "UC05_TestingGroundsCharacter.h"
+#include "FirstPersonCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AUC05_TestingGroundsGameMode::AUC05_TestingGroundsGameMode()
