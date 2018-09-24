@@ -17,20 +17,17 @@ class UC05_TESTINGGROUNDS_API AGun : public AActor
 	/** Location on gun mesh where projectiles should spawn. */
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)	class USceneComponent* FP_MuzzleLocation;
 
-	/** Gun mesh: VR view (attached to the VR controller directly, no arm, just the actual gun) */
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)	class USkeletalMeshComponent* VR_Gun;
-
-	/** Location on VR gun mesh where projectiles should spawn. */
-	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)	class USceneComponent* VR_MuzzleLocation;
-
-	
-
 public:	
 	// Sets default values for this actor's properties
 	AGun();
 
+	/** Fires a projectile. */
+	void OnFire();
+
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	USkeletalMeshComponent* GetSkeletalMeshComponent();
 
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category = Projectile) TSubclassOf<class ABallProjectile> ProjectileClass;
@@ -47,10 +44,7 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
-
-	/** Fires a projectile. */
-	void OnFire();
-
+		
 private:	
 	
 	
