@@ -22,7 +22,7 @@ public:
 	AGun();
 
 	/** Fires a projectile. */
-	void OnFire();
+	UFUNCTION(BlueprintCallable, Category = Gun) void OnFire();
 
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
