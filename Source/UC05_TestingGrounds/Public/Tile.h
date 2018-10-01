@@ -17,8 +17,6 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Setup") void PlaceActors(TSubclassOf<AActor> ToSpawn, int32 MinSpawn = 0, int32 MaxSpawn = 1, float Radius = 300, float MinScale = 1, float MaxScale = 1);
 
-	
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

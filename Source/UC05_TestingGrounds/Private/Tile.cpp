@@ -71,7 +71,7 @@ bool ATile::CanSpawnAtLocation(FVector Location, float Radius)
 	FHitResult HitResult;
 	bool bHasHit = GetWorld()->SweepSingleByChannel(HitResult, GlobalLocation, GlobalLocation, FQuat::Identity, ECollisionChannel::ECC_GameTraceChannel2, FCollisionShape::MakeSphere(Radius));
 	
-	DrawDebugSphere(GetWorld(), GlobalLocation, Radius, 24, (bHasHit ? FColor::Red : FColor::Green), true, 100.0f);
+	///DrawDebugSphere(GetWorld(), GlobalLocation, Radius, 24, (bHasHit ? FColor::Red : FColor::Green), true, 100.0f);
 	
 	return !bHasHit;
 }
