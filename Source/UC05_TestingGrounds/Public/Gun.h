@@ -36,10 +36,13 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay) class USoundBase* FireSound;
 
 	/** AnimMontage to play each time we fire */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay) class UAnimMontage* FireAnimation;
+	class UAnimMontage* FireAnimation;
 
 	/** AnimInstance to play the fire animation on */
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)class UAnimInstance* AnimInstance;
+	class UAnimInstance* AnimInstance;
+
+	/** Number of rounds per minute the gun is capable of firing*/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay) float RoundsPerMinute = 600;
 
 protected:
 	// Called when the game starts or when spawned
@@ -47,5 +50,6 @@ protected:
 		
 private:	
 	
-	
+	float LastFired = -1000;
+	float FireRate;
 };

@@ -33,7 +33,7 @@ AGun::AGun()
 void AGun::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	FireRate = 60.0f / RoundsPerMinute;
 }
 
 // Called every frame
@@ -56,6 +56,13 @@ void AGun::OnFire()
 		UWorld* const World = GetWorld();
 		if (World != NULL)
 		{	
+			float Time = GetWorld()->GetTimeSeconds();
+			if (Time < LastFired + FireRate) ///Trying to fire too soon?
+			{ 
+				return; 
+			}
+			LastFired = Time;
+
 			const FRotator SpawnRotation = FP_MuzzleLocation->GetComponentRotation();
 			const FVector SpawnLocation = FP_MuzzleLocation->GetComponentLocation();
 			
