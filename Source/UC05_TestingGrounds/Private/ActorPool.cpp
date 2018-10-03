@@ -15,15 +15,47 @@ UActorPool::UActorPool()
 
 AActor * UActorPool::Checkout()
 {
-	return nullptr;
+	if (Pool.Num() == 0)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[%s] Has nothing to checkout!"), *GetName());
+		return nullptr;
+	}
+	else
+	{
+		AActor* Actor = Pool.Pop();
+		UE_LOG(LogTemp, Warning, TEXT("[%s] Checking out %s"), *GetName(), *Actor->GetName());
+		return Actor;
+	}
+
+	
+	
 }
 
 void UActorPool::Return(AActor * ActorToReturn)
 {
-
+	if (!ActorToReturn)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[%s] attempted to return nullptr!"), *GetName())
+		return;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[%s] returned to pool!"), *ActorToReturn->GetName());
+		Pool.Emplace(ActorToReturn);
+	}
+	
 }
 
 void UActorPool::Add(AActor * ActorToAdd)
 {
-
+	if (!ActorToAdd)
+	{
+		UE_LOG(LogTemp, Error, TEXT("[%s] attempted to add nullptr!"), *GetName())
+			return;
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("[%s] added to pool!"), *ActorToAdd->GetName());
+		Pool.Emplace(ActorToAdd);
+	}
 }
