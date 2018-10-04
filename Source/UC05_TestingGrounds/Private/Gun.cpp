@@ -5,6 +5,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Animation/AnimInstance.h"
 #include "Kismet/GameplayStatics.h"
+#include "Perception/AISense_Hearing.h"
 
 
 // Sets default values
@@ -73,6 +74,7 @@ void AGun::OnFire()
 			// spawn the projectile at the muzzle
 			World->SpawnActor<ABallProjectile>(ProjectileClass, SpawnLocation, SpawnRotation, ActorSpawnParams);
 			
+			UAISense_Hearing::ReportNoiseEvent(GetWorld(), GetActorLocation(), 1, this);
 		}
 	}
 
