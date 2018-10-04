@@ -23,7 +23,7 @@ AActor * UActorPool::Checkout()
 	else
 	{
 		AActor* Actor = Pool.Pop();
-		UE_LOG(LogTemp, Warning, TEXT("[%s] Checking out %s"), *GetName(), *Actor->GetName());
+		///UE_LOG(LogTemp, Warning, TEXT("[%s] Checking out %s"), *GetName(), *Actor->GetName());
 		return Actor;
 	}
 
@@ -40,7 +40,7 @@ void UActorPool::Return(AActor * ActorToReturn)
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[%s] returned to pool!"), *ActorToReturn->GetName());
+		///UE_LOG(LogTemp, Warning, TEXT("[%s] returned to pool!"), *ActorToReturn->GetName());
 		Pool.Emplace(ActorToReturn);
 	}
 	
@@ -55,7 +55,7 @@ void UActorPool::Add(AActor * ActorToAdd)
 	}
 	else
 	{
-		UE_LOG(LogTemp, Warning, TEXT("[%s] added to pool!"), *ActorToAdd->GetName());
+		///UE_LOG(LogTemp, Warning, TEXT("[%s] added to pool!"), *ActorToAdd->GetName());
 		Pool.Emplace(ActorToAdd);
 	}
 }
