@@ -48,14 +48,5 @@ void UActorPool::Return(AActor * ActorToReturn)
 
 void UActorPool::Add(AActor * ActorToAdd)
 {
-	if (!ActorToAdd)
-	{
-		UE_LOG(LogTemp, Error, TEXT("[%s] attempted to add nullptr!"), *GetName())
-			return;
-	}
-	else
-	{
-		///UE_LOG(LogTemp, Warning, TEXT("[%s] added to pool!"), *ActorToAdd->GetName());
-		Pool.Emplace(ActorToAdd);
-	}
+	Return(ActorToAdd);
 }

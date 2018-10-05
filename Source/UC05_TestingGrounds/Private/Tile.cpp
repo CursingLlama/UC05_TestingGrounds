@@ -117,8 +117,10 @@ void ATile::BeginPlay()
 
 void ATile::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-	PoolRef->Return(NavMeshBoundsVolume);
-
+	if (PoolRef && NavMeshBoundsVolume)
+	{
+		PoolRef->Return(NavMeshBoundsVolume);
+	}
 	Super::EndPlay(EndPlayReason);
 }
 
